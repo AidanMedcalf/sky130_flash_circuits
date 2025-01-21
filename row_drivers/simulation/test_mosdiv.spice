@@ -1,0 +1,46 @@
+** sch_path: /home/amedcalf/projects/flash_circuits/row_drivers/test_mosdiv.sch
+**.subckt test_mosdiv
+vb vb GND 0.7
+XM1 vint vb GND GND sky130_fd_pr__nfet_g5v0d10v5 L=0.5 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM2 vpb vpb vint GND sky130_fd_pr__nfet_g5v0d10v5 L=0.5 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+vpc vpc GND {VPCX}
+XM3 vpb vp vpc vpc sky130_fd_pr__pfet_g5v0d10v5 L=0.5 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+vp vp GND dc 0 pulse(0 {VPCX} 50n 5n 5n 45n 100n)
+**** begin user architecture code
+
+** opencircuitdesign pdks install
+.lib /home/amedcalf/open-asic/pdk/sky130A/libs.tech/combined/sky130.lib.spice tt
+
+
+
+
+.param VDD=1.8
+.param VPCX=6.7
+.param VGCX=-3.8
+.option savecurrents
+.control
+  unset appendwrite
+  save all
+  op
+  remzerovec
+  write test_mosdiv.raw
+
+  set appendwrite
+
+  dc vb 0 1.8 0.05
+  remzerovec
+  write test_mosdiv.raw
+
+  tran 1n 200n
+  remzerovec
+  write test_mosdiv.raw
+.endc
+
+
+**** end user architecture code
+**.ends
+.GLOBAL GND
+.end

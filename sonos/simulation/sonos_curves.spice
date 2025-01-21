@@ -1,0 +1,56 @@
+** sch_path: /home/amedcalf/projects/flash_circuits/sonos/sonos_curves.sch
+**.subckt sonos_curves
+XM1 vd vg vs vb sky130_fd_bs_flash__special_sonosfet_star L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM2 vd vg vs vb sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+vg vg GND 0
+vd vd GND 1
+vs vs GND 0
+vb vb GND 0
+XM3 vd vg vxe vb sky130_fd_bs_flash__special_sonosfet_star L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM4 vxe net1 vs vb sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+vpg net1 GND 1.8
+XM6 vxp net1 vs vb sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM5 vd vg vxp vb sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+**** begin user architecture code
+
+** opencircuitdesign pdks install
+.lib /home/amedcalf/open-asic/pdk/sky130A/libs.tech/combined/sky130.lib.spice tt
+.include /home/amedcalf/open-asic/pdk/sky130A/libs.tech/combined/sonos_e/begin_of_life.spice
+.include /home/amedcalf/open-asic/pdk/sky130A/libs.tech/combined/sonos_e/begin_of_life.pm3.spice
+.include /home/amedcalf/open-asic/pdk/sky130A/libs.tech/combined/sonos_p/begin_of_life.spice
+.include /home/amedcalf/open-asic/pdk/sky130A/libs.tech/combined/sonos_p/begin_of_life.pm3.spice
+
+
+
+.option savecurrents
+*.option abstol=1e-10 reltol=1e-2 chgtol=1e-12
+*.ic v(bootp)=0 v(bootn)=0 v(inp)=0 v(inn)=0 v(inf)=0 v(inb)=0
+*.ic v(net3)=0 v(net4)=0
+.control
+  unset appendwrite
+  save all
+  op
+  remzerovec
+  write test_sonos_curves.raw
+
+  *tran 0.5n 2u
+  dc vg -1.5 3 0.1 vd 0.1 2.1 0.5
+  remzerovec
+  write test_sonos_curves.raw
+
+  dc vd 0 2 0.1 vg -1.5 3 0.5
+  remzerovec
+  write test_sonos_curves_gvd.raw
+.endc
+
+
+**** end user architecture code
+**.ends
+.GLOBAL GND
+.end

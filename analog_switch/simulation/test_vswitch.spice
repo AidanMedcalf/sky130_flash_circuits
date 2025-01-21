@@ -1,0 +1,58 @@
+** sch_path: /home/amedcalf/projects/flash_circuits/analog_switch/test_vswitch.sch
+**.subckt test_vswitch
+XM1 vo VINT vllx VLL sky130_fd_pr__nfet_g5v0d10v5 L=4 W=8 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM2 vllx vll_en VLL VLL sky130_fd_pr__nfet_g5v0d10v5 L=4 W=8 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM3 vo VINT vhhx VHH sky130_fd_pr__pfet_g5v0d10v5 L=4 W=8 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM4 vhhx vhh_en VHH VHH sky130_fd_pr__pfet_g5v0d10v5 L=4 W=8 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM5 vo vr_en_vb vrx vrx sky130_fd_pr__pfet_g5v0d10v5 L=4 W=8 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM6 vrx vr_en vr vr_b sky130_fd_pr__pfet_g5v0d10v5 L=4 W=8 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+VHH VHH GND {VHH}
+VLL VLL GND {VLL}
+vr vr GND dc 1 pwl(0 1 1.1u 2.5)
+VINT VINT GND {VINT}
+vll_en vll_en GND dc {VLL} pulse({VLL} 0 210n 5n 5n 190n 1.6u)
+vr_en vr_en GND dc {VHH} pulse({VHH} -1 10n 5n 5n 190n 800n)
+vhh_en vhh_en GND dc {VHH} pulse({VHH} 0 1210n 5n 5n 190n 800n)
+bvr_en_vb vr_en_vb GND V = 2*{VINT}*(((v(vr_en)+1)/({VHH}+1))*(v(vll_en)/{VLL}) - 0.5)
+CL vo GND 1p m=1
+bvr_b vr_b GND V = ({VHH}-v(vr))*(1 - v(vhh_en)/{VHH}) + v(vr)
+**** begin user architecture code
+
+** opencircuitdesign pdks install
+.lib /home/amedcalf/open-asic/pdk/sky130A/libs.tech/combined/sky130.lib.spice tt
+
+
+
+
+.param VDD=3
+.param VHH=6.7
+.param VLL=-3.8
+.param VINT=1.5
+.option savecurrents
+*.option abstol=1e-10 reltol=1e-2 chgtol=1e-12
+*.ic v(bootp)=0 v(bootn)=0 v(inp)=0 v(inn)=0 v(inf)=0 v(inb)=0
+*.ic v(net3)=0 v(net4)=0
+.control
+  unset appendwrite
+  save all
+  op
+  remzerovec
+  write test_vswitch.raw
+  *set appendwrite
+
+  tran 0.5n 2u
+  remzerovec
+  write test_vswitch.raw
+.endc
+
+
+**** end user architecture code
+**.ends
+.GLOBAL GND
+.end

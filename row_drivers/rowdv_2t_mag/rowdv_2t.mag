@@ -1,0 +1,76 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1733178704
+<< error_s >>
+rect 7982 508 12076 680
+rect 0 80 4626 428
+rect 4716 304 5716 362
+rect 5874 304 6874 362
+rect 6968 304 7168 362
+rect 7278 304 7478 362
+rect 7634 304 7834 362
+rect 4716 146 5716 204
+rect 5874 146 6874 204
+rect 6968 146 7168 204
+rect 7278 146 7478 204
+rect 7634 146 7834 204
+rect 7902 0 12156 508
+<< dnwell >>
+rect 7982 80 12076 428
+<< nwell >>
+rect 0 80 4626 428
+rect 7902 80 9800 428
+use sky130_fd_pr__nfet_g5v0d10v5_SMV9TY  XM1x
+timestamp 1733178670
+transform 0 -1 7703 1 0 254
+box -108 -157 108 157
+use sky130_fd_pr__nfet_g5v0d10v5_SMV9TY  XM1
+timestamp 1733178670
+transform 0 -1 7347 1 0 254
+box -108 -157 108 157
+use sky130_fd_pr__pfet_g5v0d10v5_PEDUUG  XM2
+timestamp 1733178670
+transform 0 -1 8066 1 0 254
+box -174 -202 174 164
+use sky130_fd_pr__nfet_g5v0d10v5_7YX9TA  XM3
+timestamp 1733178670
+transform 0 -1 10359 1 0 254
+box -108 -557 108 557
+use sky130_fd_pr__nfet_g5v0d10v5_7YX9TA  XM3x
+timestamp 1733178670
+transform 0 -1 11519 1 0 254
+box -108 -557 108 557
+use sky130_fd_pr__pfet_g5v0d10v5_PE9SWF  XM4
+timestamp 1733178670
+transform 0 -1 9198 1 0 254
+box -174 -602 174 564
+use sky130_fd_pr__nfet_g5v0d10v5_EJLCLW  XM5
+timestamp 1733178670
+transform 0 -1 7099 1 0 254
+box -108 -157 108 157
+use sky130_fd_pr__pfet_g5v0d10v5_PEDUUG  XM6
+timestamp 1733178670
+transform 0 -1 164 1 0 254
+box -174 -202 174 164
+use sky130_fd_pr__nfet_g5v0d10v5_7YX9TA  XM7
+timestamp 1733178670
+transform 0 -1 5185 1 0 254
+box -108 -557 108 557
+use sky130_fd_pr__nfet_g5v0d10v5_7YX9TA  XM8
+timestamp 1733178670
+transform 0 -1 6343 1 0 254
+box -108 -557 108 557
+use sky130_fd_pr__pfet_g5v0d10v5_PEYLZB  XM9
+timestamp 1733178670
+transform 0 -1 1430 1 0 254
+box -174 -1102 174 1064
+use sky130_fd_pr__pfet_g5v0d10v5_WEYLZB  XM10
+timestamp 1733178670
+transform 0 1 3560 1 0 254
+box -174 -1066 174 1066
+use sky130_fd_pr__pfet_g5v0d10v5_PEDUUG  XM11
+timestamp 1733178670
+transform 0 -1 8432 1 0 254
+box -174 -202 174 164
+<< end >>

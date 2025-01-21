@@ -1,0 +1,442 @@
+** sch_path: /home/amedcalf/projects/flash_circuits/integrated/rowdv_2t_sonos/test_rowdv_2t.sch
+**.subckt test_rowdv_2t
+vssect vssect GND dc {VPCX} pwl(0 {VPCX} 730n {VPCX} 760n 0 1150n 0 1180n {VPCX})
+vp vp GND dc 0 pulse(0 {VPCX} 10n 2n 2n 98n 200n)
+venb venb_in GND dc {VDD} pwl(0 {VDD} 350n {VDD} 360n 0 750n 0 760n {VDD} 1170n {VDD} 1180n 0)
+XM1 net1 venb_in GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM2 net1 venb_in VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+vpc VPC GND dc {VPCX} pwl(0 {VPCX} 350n {VPCX} 380n 0 730n 0 760n {VDD} 1140n {VDD} 1170n 0)
+vdd VDD GND {VDD}
+vgc VGC GND dc 0 pwl(0 0 740n 0 760n {VGCX} 1150n {VGCX} 1170n 0)
+XM3 ven net1 GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM4 ven net1 VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM5 venb ven GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM6 venb ven VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM7 swgnd vssect GND GND sky130_fd_pr__nfet_g5v0d10v5 L=0.5 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+x1 vssect ven venb vp vp_vdd vpb_vdd swgnd VPC VGC VDD GND GND WLS WL rowdv_2t
+XM8 net2 vp GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM9 net2 vp VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM10 vp_vdd net2 GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM11 vp_vdd net2 VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM12 vpb_vdd vp_vdd GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM13 vpb_vdd vp_vdd VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[62] net3[62] wls_x vsint[62] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[61] net3[61] wls_x vsint[61] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[60] net3[60] wls_x vsint[60] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[59] net3[59] wls_x vsint[59] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[58] net3[58] wls_x vsint[58] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[57] net3[57] wls_x vsint[57] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[56] net3[56] wls_x vsint[56] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[55] net3[55] wls_x vsint[55] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[54] net3[54] wls_x vsint[54] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[53] net3[53] wls_x vsint[53] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[52] net3[52] wls_x vsint[52] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[51] net3[51] wls_x vsint[51] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[50] net3[50] wls_x vsint[50] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[49] net3[49] wls_x vsint[49] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[48] net3[48] wls_x vsint[48] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[47] net3[47] wls_x vsint[47] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[46] net3[46] wls_x vsint[46] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[45] net3[45] wls_x vsint[45] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[44] net3[44] wls_x vsint[44] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[43] net3[43] wls_x vsint[43] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[42] net3[42] wls_x vsint[42] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[41] net3[41] wls_x vsint[41] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[40] net3[40] wls_x vsint[40] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[39] net3[39] wls_x vsint[39] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[38] net3[38] wls_x vsint[38] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[37] net3[37] wls_x vsint[37] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[36] net3[36] wls_x vsint[36] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[35] net3[35] wls_x vsint[35] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[34] net3[34] wls_x vsint[34] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[33] net3[33] wls_x vsint[33] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[32] net3[32] wls_x vsint[32] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[31] net3[31] wls_x vsint[31] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[30] net3[30] wls_x vsint[30] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[29] net3[29] wls_x vsint[29] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[28] net3[28] wls_x vsint[28] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[27] net3[27] wls_x vsint[27] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[26] net3[26] wls_x vsint[26] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[25] net3[25] wls_x vsint[25] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[24] net3[24] wls_x vsint[24] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[23] net3[23] wls_x vsint[23] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[22] net3[22] wls_x vsint[22] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[21] net3[21] wls_x vsint[21] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[20] net3[20] wls_x vsint[20] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[19] net3[19] wls_x vsint[19] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[18] net3[18] wls_x vsint[18] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[17] net3[17] wls_x vsint[17] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[16] net3[16] wls_x vsint[16] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[15] net3[15] wls_x vsint[15] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[14] net3[14] wls_x vsint[14] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[13] net3[13] wls_x vsint[13] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[12] net3[12] wls_x vsint[12] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[11] net3[11] wls_x vsint[11] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[10] net3[10] wls_x vsint[10] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[9] net3[9] wls_x vsint[9] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[8] net3[8] wls_x vsint[8] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[7] net3[7] wls_x vsint[7] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[6] net3[6] wls_x vsint[6] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[5] net3[5] wls_x vsint[5] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[4] net3[4] wls_x vsint[4] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[3] net3[3] wls_x vsint[3] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[2] net3[2] wls_x vsint[2] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[1] net3[1] wls_x vsint[1] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[0] net3[0] wls_x vsint[0] VSL sky130_fd_bs_flash__special_sonosfet_original L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+vbl VBL GND dc 0 pwl(0 {VGCX} 350n {VGCX} 360n 1.1 740n 1.1 760n {VPCX} 1170n {VPCX} 1190n 1.1)
+vsl VSL GND dc 0 pwl(0 {VGCX} 350n {VGCX} 360n 0 740n 0 760n {VPCX} 1170n {VPCX} 1190n 0)
+Vmeas WLS wls_x 0
+.save i(vmeas)
+XM14[62] vsint[62] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[61] vsint[61] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[60] vsint[60] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[59] vsint[59] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[58] vsint[58] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[57] vsint[57] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[56] vsint[56] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[55] vsint[55] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[54] vsint[54] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[53] vsint[53] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[52] vsint[52] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[51] vsint[51] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[50] vsint[50] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[49] vsint[49] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[48] vsint[48] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[47] vsint[47] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[46] vsint[46] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[45] vsint[45] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[44] vsint[44] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[43] vsint[43] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[42] vsint[42] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[41] vsint[41] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[40] vsint[40] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[39] vsint[39] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[38] vsint[38] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[37] vsint[37] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[36] vsint[36] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[35] vsint[35] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[34] vsint[34] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[33] vsint[33] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[32] vsint[32] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[31] vsint[31] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[30] vsint[30] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[29] vsint[29] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[28] vsint[28] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[27] vsint[27] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[26] vsint[26] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[25] vsint[25] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[24] vsint[24] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[23] vsint[23] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[22] vsint[22] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[21] vsint[21] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[20] vsint[20] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[19] vsint[19] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[18] vsint[18] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[17] vsint[17] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[16] vsint[16] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[15] vsint[15] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[14] vsint[14] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[13] vsint[13] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[12] vsint[12] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[11] vsint[11] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[10] vsint[10] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[9] vsint[9] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[8] vsint[8] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[7] vsint[7] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[6] vsint[6] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[5] vsint[5] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[4] vsint[4] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[3] vsint[3] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[2] vsint[2] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[1] vsint[1] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[0] vsint[0] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM15[63] net4 wls_x vsint[63] VSL sky130_fd_bs_flash__special_sonosfet_star L=0.22 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29'
++ pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM14[63] vsint[63] WL VSL VSL sky130_fd_pr__special_nfet_pass_flash L=0.15 W=0.45 nf=1 ad='1 * W * 0.29' as='1 * W * 0.29' pd='2 * (W + 0.29)'
++ ps='2 * (W + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+Vmeas1[62] VBL net3[62] 0
+Vmeas1[61] VBL net3[61] 0
+Vmeas1[60] VBL net3[60] 0
+Vmeas1[59] VBL net3[59] 0
+Vmeas1[58] VBL net3[58] 0
+Vmeas1[57] VBL net3[57] 0
+Vmeas1[56] VBL net3[56] 0
+Vmeas1[55] VBL net3[55] 0
+Vmeas1[54] VBL net3[54] 0
+Vmeas1[53] VBL net3[53] 0
+Vmeas1[52] VBL net3[52] 0
+Vmeas1[51] VBL net3[51] 0
+Vmeas1[50] VBL net3[50] 0
+Vmeas1[49] VBL net3[49] 0
+Vmeas1[48] VBL net3[48] 0
+Vmeas1[47] VBL net3[47] 0
+Vmeas1[46] VBL net3[46] 0
+Vmeas1[45] VBL net3[45] 0
+Vmeas1[44] VBL net3[44] 0
+Vmeas1[43] VBL net3[43] 0
+Vmeas1[42] VBL net3[42] 0
+Vmeas1[41] VBL net3[41] 0
+Vmeas1[40] VBL net3[40] 0
+Vmeas1[39] VBL net3[39] 0
+Vmeas1[38] VBL net3[38] 0
+Vmeas1[37] VBL net3[37] 0
+Vmeas1[36] VBL net3[36] 0
+Vmeas1[35] VBL net3[35] 0
+Vmeas1[34] VBL net3[34] 0
+Vmeas1[33] VBL net3[33] 0
+Vmeas1[32] VBL net3[32] 0
+Vmeas1[31] VBL net3[31] 0
+Vmeas1[30] VBL net3[30] 0
+Vmeas1[29] VBL net3[29] 0
+Vmeas1[28] VBL net3[28] 0
+Vmeas1[27] VBL net3[27] 0
+Vmeas1[26] VBL net3[26] 0
+Vmeas1[25] VBL net3[25] 0
+Vmeas1[24] VBL net3[24] 0
+Vmeas1[23] VBL net3[23] 0
+Vmeas1[22] VBL net3[22] 0
+Vmeas1[21] VBL net3[21] 0
+Vmeas1[20] VBL net3[20] 0
+Vmeas1[19] VBL net3[19] 0
+Vmeas1[18] VBL net3[18] 0
+Vmeas1[17] VBL net3[17] 0
+Vmeas1[16] VBL net3[16] 0
+Vmeas1[15] VBL net3[15] 0
+Vmeas1[14] VBL net3[14] 0
+Vmeas1[13] VBL net3[13] 0
+Vmeas1[12] VBL net3[12] 0
+Vmeas1[11] VBL net3[11] 0
+Vmeas1[10] VBL net3[10] 0
+Vmeas1[9] VBL net3[9] 0
+Vmeas1[8] VBL net3[8] 0
+Vmeas1[7] VBL net3[7] 0
+Vmeas1[6] VBL net3[6] 0
+Vmeas1[5] VBL net3[5] 0
+Vmeas1[4] VBL net3[4] 0
+Vmeas1[3] VBL net3[3] 0
+Vmeas1[2] VBL net3[2] 0
+Vmeas1[1] VBL net3[1] 0
+Vmeas1[0] VBL net3[0] 0
+.save i(vmeas1[62:0])
+Vmeas2 VBL net4 0
+.save i(vmeas2)
+**** begin user architecture code
+
+
+.param VDD=1.8
+.param VPCX=6.7
+.param VGCX=-3.8
+.option savecurrents
+.control
+  unset appendwrite
+  save all
+  op
+  remzerovec
+  write test_rowdv_2t.raw
+  *set appendwrite
+
+  tran 1n 1.6u
+  remzerovec
+  write test_rowdv_2t.raw
+.endc
+
+
+
+** opencircuitdesign pdks install
+.lib /home/amedcalf/open-asic/pdk/sky130A/libs.tech/combined/sky130.lib.spice tt
+.include /home/amedcalf/open-asic/pdk/sky130A/libs.tech/combined/sonos_e/begin_of_life.spice
+.include /home/amedcalf/open-asic/pdk/sky130A/libs.tech/combined/sonos_e/begin_of_life.pm3.spice
+.include /home/amedcalf/open-asic/pdk/sky130A/libs.tech/combined/sonos_p/begin_of_life.spice
+.include /home/amedcalf/open-asic/pdk/sky130A/libs.tech/combined/sonos_p/begin_of_life.pm3.spice
+* .include /home/amedcalf/open-asic/pdk/sky130A/libs.tech/combined/../../libs.ref/sky130_fd_pr/spice/sky130_fd_pr__special_nfet_pass_flash.pm3.spice
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  rowdv_2t.sym # of pins=14
+** sym_path: /home/amedcalf/projects/flash_circuits/integrated/rowdv_2t_sonos/rowdv_2t.sym
+** sch_path: /home/amedcalf/projects/flash_circuits/integrated/rowdv_2t_sonos/rowdv_2t.sch
+.subckt rowdv_2t ssect_vpc en_vdd enb_vdd p_vpc p_vdd pb_vdd swgnd VPC VGC VDD VSS VSUBS WLS WL
+*.ipin p_vpc
+*.opin WLS
+*.ipin swgnd
+*.ipin VDD
+*.ipin VSS
+*.ipin en_vdd
+*.ipin enb_vdd
+*.ipin VGC
+*.ipin VPC
+*.ipin ssect_vpc
+*.opin WL
+*.ipin VSUBS
+*.ipin p_vdd
+*.ipin pb_vdd
+XM1 wlsx p_vdd swgnd VSUBS sky130_fd_pr__nfet_g5v0d10v5 L=0.5 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM2 pbs p_vpc VPC VPC sky130_fd_pr__pfet_g5v0d10v5 L=0.5 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM3 wlsy pb_vdd VGC VGC sky130_fd_pr__nfet_g5v0d10v5 L=0.5 W=5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM4 WLS pbs VPC VPC sky130_fd_pr__pfet_g5v0d10v5 L=0.5 W=5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM6 pbpass p_vpc VDD VDD sky130_fd_pr__pfet_g5v0d10v5 L=0.5 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM7 wlil pbpass VSS VSUBS sky130_fd_pr__nfet_g5v0d10v5 L=0.5 W=5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM9 WL en_vdd wlih VDD sky130_fd_pr__pfet_g5v0d10v5 L=0.5 W=10 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM8 WL enb_vdd wlil VSUBS sky130_fd_pr__nfet_g5v0d10v5 L=0.5 W=5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM10 wlih pbpass VDD VDD sky130_fd_pr__pfet_g5v0d10v5 L=0.5 W=10 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM11 pbs ssect_vpc VPC VPC sky130_fd_pr__pfet_g5v0d10v5 L=0.5 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM5 pbpass p_vdd VSS VSS sky130_fd_pr__nfet_g5v0d10v5 L=0.5 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM1x pbs VDD wlsx VSUBS sky130_fd_pr__nfet_g5v0d10v5 L=0.5 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM3x WLS VDD wlsy VGC sky130_fd_pr__nfet_g5v0d10v5 L=0.5 W=5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+.ends
+
+.GLOBAL GND
+.end
